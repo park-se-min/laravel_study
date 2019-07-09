@@ -11,14 +11,6 @@
 |
 */
 
-Route::get('/{foo?}', function ($foo='bar') {
-    // return view('/test/test1');
-    return $foo;
+Route::get('/test', function () {
+    return view('test1');
 });
-
-/* 
-Route::get('/', function () {
-    // return view('/test/test1');
-    return view('welcome');
-});
- */
