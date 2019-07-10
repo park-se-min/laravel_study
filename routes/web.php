@@ -11,14 +11,20 @@
 |
 */
 
-Route::get('/{foo?}', function ($foo='bar') {
-    // return view('/test/test1');
-    return $foo;
+// Route::get('/', function () {
+//     return view('test/test1')->with('name', 'Foo');
+//     // return view('errors/503');
+// });
+
+
+Route::get('/', function () {
+	$items = ['as', 'bbb', 'ccc'];
+
+    return view('welcome')->with([
+		'asdf'=>'aaaa',
+		'items'=>$items,
+		'itemCount'=>count($items),
+	]);
 });
 
-/* 
-Route::get('/', function () {
-    // return view('/test/test1');
-    return view('welcome');
-});
- */
+

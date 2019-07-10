@@ -71,9 +71,21 @@
                     <a href="{{ url('/login') }}">Login</a>
                     <a href="{{ url('/register') }}">Register</a>
                 </div>
-            @endif
+			@endif
 
             <div class="content">
+				{{ $itemCount }}
+				{{ count($items) }}
+
+				@if ($itemCount<count($items))
+					1
+				@else
+					2
+				@endif
+
+                <div class="title m-b-md">
+					{{ $asdf or 'hello' }}
+                </div>
                 <div class="title m-b-md">
                     Laravel
                 </div>
