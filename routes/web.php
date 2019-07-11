@@ -20,8 +20,8 @@
 Route::get('/', function () {
 	$items = ['as', 'bbb', 'ccc'];
 
-    return view('welcome')->with([
-		'asdf'=>'aaaa',
+    return view('welcome2')->with([
+		'as1df'=>'aaaa',
 		'items'=>$items,
 		'itemCount'=>count($items),
 	]);
