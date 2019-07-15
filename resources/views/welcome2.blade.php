@@ -12,4 +12,3 @@
 	</script>
 @endsection
 
-@extends('layouts.master')
