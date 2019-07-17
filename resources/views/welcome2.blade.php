@@ -8,7 +8,7 @@
 
 @section('script')
 	<script>
-		alert("짜식");
+		alert("짜111식");
 	</script>
 @endsection
 
