@@ -20,6 +20,9 @@ Route::get('/home', function () {
 	return 'home';
 });
 
+Route::get('/home1', function () {
+	return 'home1';
+});
 
 Route::get('/home2', function () {
 	return 'home2';
