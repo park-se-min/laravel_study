@@ -16,6 +16,14 @@
 //     // return view('errors/503');
 // });
 
+Route::get('/home', function () {
+	return 'home';
+});
+
+
+Route::get('/home2', function () {
+	return 'home2';
+});
 
 Route::get('/', function () {
 	$items = ['as', 'bbb', 'ccc'];
