@@ -39,4 +39,3 @@ Route::get('/', function () {
 });
 
 
-d
