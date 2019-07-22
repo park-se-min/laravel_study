@@ -1,7 +1,7 @@
 @section('script')
 	@parent
 	<script>
-		alert("짜1111식");
+		alert("짜222식");
 	</script>
 @endsection
 

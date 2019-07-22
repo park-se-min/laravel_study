@@ -16,9 +16,7 @@
 //     // return view('errors/503');
 // });
 
-Route::get('/home', function () {
-	return 'home';
-});
+Route::get('/home', 'WelcomeController@index');
 
 Route::get('/home1', function () {
 	return 'home1';
