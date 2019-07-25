@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -25,5 +26,13 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password', 'remember_token',
-    ];
+	];
+	
+	public function index()
+	{
+		if (Auth::attempt(['email' => 'mail@test.com', 'password' => '1234']))
+		{
+			return redirect('protected');
+		}
+	}
 }

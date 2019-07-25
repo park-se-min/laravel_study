@@ -13,7 +13,8 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+		//
+		return "ArticlesController_index";
     }
 
     /**

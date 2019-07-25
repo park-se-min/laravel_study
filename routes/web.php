@@ -26,6 +26,8 @@ Route::get('/home2', function () {
 	return 'home2';
 });
 
+Route::get('/articles', 'ArticlesController@index');
+
 Route::get('/', function () {
 	$items = ['as', 'bbb', 'ccc'];
 
@@ -37,3 +39,36 @@ Route::get('/', function () {
 });
 
 
+/* ★ 로그인 ★ */
+Route::get('/', 'WelcomeController@index');
+
+Route::get('/aa', 'WelcomeController@index2');
+
+Route::get('/auth/login', function () {
+	$credentials = [
+		'email' => 'mail@test.com',
+		'password' => '1234'
+	];
+
+	if (! auth()->attempt($credentials)) {
+		return "로그인 정보가 정확하지 않습니다";
+	}
+	return redirect('protected');
+});
+
+Route::get('protected', function () {
+	dump(session()->all());
+
+	if (! auth()->check()) {
+		return '누구?';
+	}
+
+	return '어서오삼'. auth()->user()->name;
+});
+
+
+Route::get('auth/logout', function () {
+	auth()->logout();
+
+	return "또보삼~";
+});

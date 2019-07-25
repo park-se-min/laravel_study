@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class WelcomeController extends Controller
 {
@@ -15,5 +16,14 @@ class WelcomeController extends Controller
 			'items'=>$items,
 			'itemCount'=>count($items),
 		]);
+	}
+
+	
+	public function index2()
+	{
+		if (Auth::attempt(['email' => 'mail@test.com', 'password' => '1234']))
+		{
+			return redirect('protected');
+		}
 	}
 }
