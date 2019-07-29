@@ -39,36 +39,28 @@ Route::get('/', function () {
 });
 
 
-/* ★ 로그인 ★ */
+// 메인 페이지
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/aa', 'WelcomeController@index2');
+// 로그인
+Route::get('/login', 'WelcomeController@login');
 
-Route::get('/auth/login', function () {
-	$credentials = [
-		'email' => 'mail@test.com',
-		'password' => '1234'
-	];
-
-	if (! auth()->attempt($credentials)) {
-		return "로그인 정보가 정확하지 않습니다";
-	}
-	return redirect('protected');
-});
-
-Route::get('protected', function () {
+// 로그인 처리완료 페이지
+Route::get('/protected', 'WelcomeController@protected');
+Route::get('/protected2', ['middleware'=>'auth', function(){
 	dump(session()->all());
 
-	if (! auth()->check()) {
-		return '누구?';
-	}
+	//// 에러가 나야되는데...
+	// if (! auth()->check()) {
+	// 	return '누구?';
+	// }
 
 	return '어서오삼'. auth()->user()->name;
-});
+}]);
 
+// 로그아웃
+Route::get('/logout', 'WelcomeController@logout'); 
 
-Route::get('auth/logout', function () {
-	auth()->logout();
+Auth::routes();
 
-	return "또보삼~";
-});
+Route::get('/home', 'HomeController@index');
