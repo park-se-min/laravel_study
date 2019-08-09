@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
 		if (config('database.default') !== 'sqlite'){
 			DB::statement('SET FOREIGN_KEY_CHECKS=1');
 		}
-
-		 */
+ */
+		
     }
 }
