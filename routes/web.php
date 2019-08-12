@@ -64,3 +64,8 @@ Route::get('/logout', 'WelcomeController@logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+DB::listen(function($query){
+	var_dump($query->sql);
+});

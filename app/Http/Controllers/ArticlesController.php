@@ -14,7 +14,12 @@ class ArticlesController extends Controller
     public function index()
     {
 		//
-		return "ArticlesController_index";
+
+		$articles = \App\Article::with('user')->get();
+
+		return view('articles.index', compact('articles'));
+
+		// return "ArticlesController_index";
     }
 
     /**
