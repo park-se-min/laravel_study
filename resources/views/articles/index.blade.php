@@ -18,4 +18,10 @@
 	</ul>
 </div>
 
+@if ($articles->count())
+	<div class="text-center">
+		{!! $articles->render() !!}
+	</div>
+@endif 
+
 @stop
