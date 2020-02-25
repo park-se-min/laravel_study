@@ -69,3 +69,5 @@ Route::get('/home', 'HomeController@index');
 DB::listen(function($query){
 	var_dump($query->sql);
 });
+
+Route::resource('articles', 'ArticlesController');
