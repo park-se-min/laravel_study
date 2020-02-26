@@ -14,10 +14,10 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index();
-			$table->string('title');
-			$table->text('content');
+            $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
+            $table->string('title');
+            $table->text('content');
 
 			$table->timestamps();
 			
@@ -32,6 +32,7 @@ class CreateArticlesTable extends Migration
      */
     public function down()
     {
+		Schema::dropIfExists('article_tag');
         Schema::dropIfExists('articles');
     }
 }

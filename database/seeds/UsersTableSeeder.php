@@ -11,13 +11,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-		//
+		// 팩토리 이용.
 		factory(App\User::class, 1)->create();
 
-		App\User::create([
-			'name' => sprintf('%s %s', str_random(3), str_random(4)),
-			'email' => str_random(10). '@ddd.com',
-			'password' => bcrypt('password'),
-		]);
+		// App\User::create([
+		// 	'name' => sprintf('%s %s', str_random(3), str_random(4)),
+		// 	'email' => str_random(10). '@ddd.com',
+		// 	'password' => bcrypt('password'),
+		// ]);
     }
 }

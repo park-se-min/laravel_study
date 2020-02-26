@@ -10,19 +10,19 @@
 | database. Just tell the factory how a default model should look.
 |
 */
-
+/* 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
 	$date = $faker->datetimeThisMonth;
 
     return [
-        'title' => $faker->sentence(),
-        'content' => $faker->paragraph(),
+        'name' => $faker->name,
+        'email' => $faker->safeEmail,
         'created_at' => $date,
         'updated_at' => $date,
     ];
 });
+ */
 
-/* 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -33,4 +33,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
- */
+
+$factory->define(App\Article::class, function (Faker\Generator $faker) {
+    $date = $faker->dateTimeThismonth;
+
+    return [
+        'title' => $faker->sentence(),
+        'content' => $faker->paragraph(),
+		'created_at' => $date,
+        'updated_at' => $date,
+    ];
+});
+ 
