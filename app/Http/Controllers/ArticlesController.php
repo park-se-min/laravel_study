@@ -13,17 +13,19 @@ class ArticlesController extends Controller
      */
     public function index()
     {
+		//// 1
 		// $articles = \App\Article::get();
-		// return view('articles.index', compact('articles'));
-
+		
+		//// 2
 		// $articles = \App\Article::with('user')->get();
-		// return view('articles.index', compact('articles'));
-
+		
+		//// 3
 		// $articles = \App\Article::get();
 		// $articles->load('user');
-		// return view('articles.index', compact('articles'));
-
+		
+		//// 4
 		$articles = \App\Article::latest()->paginate(3);
+
 		return view('articles.index', compact('articles'));
 
 		// return "ArticlesController_index";

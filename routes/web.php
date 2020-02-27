@@ -66,8 +66,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
-DB::listen(function($query){
-	var_dump($query->sql);
-});
+// DB::listen(function($query){
+// 	var_dump($query->sql);
+// 	echo "<br>";
+// });
 
 Route::resource('articles', 'ArticlesController');
