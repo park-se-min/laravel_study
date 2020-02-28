@@ -49,6 +49,8 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
+								<li><a href="{{ url('/articles/create') }}">Articles/create</a></li>
+								<li><a href="{{ url('/articles') }}">Articles</a></li>
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}">Login</a></li>
                             <li><a href="{{ url('/register') }}">Register</a></li>
@@ -76,9 +78,15 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+		  </nav>
+		  
+			@if(session()->has('flash_message'))
+				<div class="alert alert-info" role="alert">
+					{{ session('flash_message') }}
+				</div>
+			@endif
 
-        @yield('content')
+      	@yield('content')
     </div>
 
     <!-- Scripts -->

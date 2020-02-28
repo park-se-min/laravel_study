@@ -24,7 +24,7 @@ class ArticlesController extends Controller
 		// $articles->load('user');
 		
 		//// 4
-		$articles = \App\Article::latest()->paginate(3);
+		$articles = \App\Article::latest()->paginate(10);
 
 		return view('articles.index', compact('articles'));
 
@@ -50,7 +50,25 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		  //
+		  $rules = [
+			  'title' => ['required'],
+			  'content' => ['required', 'min:10'],
+		  ];
+
+		  $validator = \Validator::make($request->all(), $rules);
+
+		  if ($validator->fails()) {
+			  return back()->withErrors($validator)->withInput();
+		  }
+
+		  $article = \App\User::find(1)->articles()->create($request->all());
+
+		 if (!$article) {
+			return back()->with('flash_message', '글저장ㄴㄴ')->withInput();
+		  }
+
+		  return redirect(route('articles.index'))->with('flash_message', '글저장 ㅇㅇㅇㅇㅇ');
     }
 
     /**

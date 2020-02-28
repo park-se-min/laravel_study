@@ -12,10 +12,10 @@
 
 		<div class="form-group {{ $errors->has('title') ?'asdf' : '' }}">
 			<input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control">
-			{!! $errors->first('title', '<span class="form-error">:msg</span>') !!}
+			{!! $errors->first('content', '<span class="form-error">:message</span>') !!}
 		</div>
 
-		<textarea name="content" id="content" rows=10 class="form-control"></textarea>
+		<textarea name="content" id="content" rows=10 class="form-control">{{ old('content') }}</textarea>
 
 		<button type="submit" class="btn btn-primary">저장하기</button>
 
