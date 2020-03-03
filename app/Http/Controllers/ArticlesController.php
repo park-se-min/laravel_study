@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticlesRequest;
 
 class ArticlesController extends Controller
 {
@@ -48,28 +49,24 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticlesRequest $request)
     {
-		  //
-		  $rules = [
-			  'title' => ['required'],
-			  'content' => ['required', 'min:10'],
-		  ];
+		// $this->validate($request, $rules, $messages);
 
-		  $validator = \Validator::make($request->all(), $rules);
+		//   $validator = \Validator::make($request->all(), $rules, $messages);
 
-		  if ($validator->fails()) {
-			  return back()->withErrors($validator)->withInput();
-		  }
+		//   if ($validator->fails()) {
+		// 	  return back()->withErrors($validator)->withInput();
+		//   }
 
-		  $article = \App\User::find(1)->articles()->create($request->all());
+		$article = \App\User::find(1)->articles()->create($request->all());
 
-		 if (!$article) {
+		if (!$article) {
 			return back()->with('flash_message', '글저장ㄴㄴ')->withInput();
-		  }
+		}
 
-		  return redirect(route('articles.index'))->with('flash_message', '글저장 ㅇㅇㅇㅇㅇ');
-    }
+		return redirect(route('articles.index'))->with('flash_message', '글저장 ㅇㅇㅇㅇㅇ');
+   }
 
     /**
      * Display the specified resource.
