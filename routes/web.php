@@ -70,5 +70,12 @@ Route::get('/home', 'HomeController@index');
 // 	var_dump($query->sql);
 // 	echo "<br>";
 // });
-
+/* 
+Event::listen('article.created', function($article) {
+	var_dump('받았음');
+	echo '<br>';
+	var_dump($article->toArray());
+	echo '<br>';
+});
+ */
 Route::resource('articles', 'ArticlesController');

@@ -15,6 +15,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
+		],
+        \App\Events\ArticlesEvent::class => [
+            \App\Listeners\ArticlesEventListener::class,
         ],
     ];
 
@@ -25,8 +28,20 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
+			parent::boot();
 
-        //
+			\Event::listen(
+				\App\Events\ArticleCreated::class,
+				\App\Listeners\ArticlesEventListener::class
+			);
+
+/*
+      	\Event::listen('article.created', function($article) {
+				// var_dump('받았음2');
+				// echo '<br>';
+				// var_dump($article->toArray());
+				// echo '<br>';
+			});
+*/
     }
 }

@@ -16,14 +16,14 @@ class ArticlesController extends Controller
     {
 		//// 1
 		// $articles = \App\Article::get();
-		
+
 		//// 2
 		// $articles = \App\Article::with('user')->get();
-		
+
 		//// 3
 		// $articles = \App\Article::get();
 		// $articles->load('user');
-		
+
 		//// 4
 		$articles = \App\Article::latest()->paginate(10);
 
@@ -49,7 +49,8 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticlesRequest $request)
+   //  public function store(ArticlesRequest $request)
+    public function store(\App\Http\Requests\ArticlesRequest $request)
     {
 		// $this->validate($request, $rules, $messages);
 
@@ -64,6 +65,15 @@ class ArticlesController extends Controller
 		if (!$article) {
 			return back()->with('flash_message', '글저장ㄴㄴ')->withInput();
 		}
+
+		var_dump('이벤트 시작');
+		echo '<br>';
+		// event('article.created', [$article]);
+		// event(new \App\Events\ArticleCreated($article));
+		event(new \App\Events\ArticlesEvent($article));
+		echo '<br>';
+		var_dump('이벤트 끝');
+		echo '<br>';
 
 		return redirect(route('articles.index'))->with('flash_message', '글저장 ㅇㅇㅇㅇㅇ');
    }
