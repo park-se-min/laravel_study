@@ -8,7 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+	use Notifiable;
+
+	protected $dates = ['last_login'];
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +34,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
 	];
-	
+
 	public function index()
 	{
 		if (Auth::attempt(['email' => 'mail@test.com', 'password' => '1234']))
