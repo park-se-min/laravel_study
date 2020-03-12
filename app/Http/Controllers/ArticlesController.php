@@ -86,7 +86,11 @@ class ArticlesController extends Controller
      */
     public function show($id)
     {
-        //
+		$article = \App\Article::findOrFail($id);
+
+		return $article->toArray();
+
+		// return __METHOD__ .' 기본키를 가진 Article whghl :'. $id;
     }
 
     /**
