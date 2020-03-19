@@ -59,7 +59,7 @@ Route::get('/protected2', ['middleware'=>'auth', function(){
 }]);
 
 // 로그아웃
-Route::get('/logout', 'WelcomeController@logout'); 
+Route::get('/logout', 'WelcomeController@logout');
 
 Auth::routes();
 
@@ -70,7 +70,7 @@ Route::get('/home', 'HomeController@index');
 // 	var_dump($query->sql);
 // 	echo "<br>";
 // });
-/* 
+/*
 Event::listen('article.created', function($article) {
 	var_dump('받았음');
 	echo '<br>';
@@ -79,3 +79,15 @@ Event::listen('article.created', function($article) {
 });
  */
 Route::resource('articles', 'ArticlesController');
+
+Route::get('mail', function () {
+	 $article = App\Article::with('user')->find(1);
+
+	 return Mail::send(
+		'emails.articles.created',
+		compact('article'),
+		function ($message) use ($article) {
+			$message->to('pseeq@naver.com');
+			$message->subject('Subject'. $article->title);
+	 });
+});
