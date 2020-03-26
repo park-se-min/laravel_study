@@ -90,9 +90,13 @@ class ArticlesController extends Controller
     {
 		$article = \App\Article::findOrFail($id);
 
+		debug($article->toArray());
+
 		// dd($article);
 
-		return $article->toArray();
+		// return $article->toArray();
+
+		return view('articles.show', compact('article'));
 
 		// return __METHOD__ .' 기본키를 가진 Article whghl :'. $id;
     }
