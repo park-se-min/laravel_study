@@ -12,8 +12,9 @@ class Documentation
 		return $this->replaceLinks($content);
 	}
 
-	protected function path($file){
-		$file = ends_with($file, '.md') ? $file : $file .'.md';
+	protected function path($file, $dir='docs')
+	{
+		$file = ends_with($file, ['.md', '.png']) ? $file : $file .'.md';
 		$path = base_path('docs' . DIRECTORY_SEPARATOR . $file);
 
 		if (! File::exists($path)){
@@ -26,4 +27,10 @@ class Documentation
 	protected function replaceLinks($content){
 		return str_replace('/docs/{{version}}', '/docs', $content);
 	}
+
+	public function image($file)
+	{
+		return \Image::make($this->path($file, 'docs/images'));
+	}
+
 }
