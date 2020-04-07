@@ -1,7 +1,7 @@
 <h1>
   {{ $article->title }}
   <small>
-    {{ $article->user->name }}
+    by {{ $article->user->name }}
   </small>
 </h1>
 
@@ -17,5 +17,5 @@
 <hr/>
 
 <footer>
-  이 메일은 {{ config('app.url') }}에서 보냈습니다.
+  Email sent by {{ config('app.url') }}
 </footer>

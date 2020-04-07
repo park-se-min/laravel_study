@@ -9,6 +9,8 @@ class WelcomeController extends Controller
 {
 	public function index()
 	{
+		flash('환영');
+
 		$items = ['as', 'bbb', 'ccc'];
 
 		return view('welcome2')->with([
@@ -18,7 +20,7 @@ class WelcomeController extends Controller
 		]);
 	}
 
-	
+
 	public function login()
 	{
 		if (Auth::attempt(['email' => 'mail@test.com', 'password' => '1234']))
@@ -26,7 +28,7 @@ class WelcomeController extends Controller
 			return redirect('protected');
 		}
 	}
-	
+
 	public function protected()
 	{
 		dump(session()->all());
@@ -34,10 +36,10 @@ class WelcomeController extends Controller
 		// if (! auth()->check()) {
 		// 	return '누구?';
 		// }
-	
+
 		return '어서오삼'. auth()->user()->name;
 	}
-	
+
 	public function logout()
 	{
 		auth()->logout();
