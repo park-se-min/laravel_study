@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
 	public function index()
 	{
-		flash('환영');
+		// flash('환영');
 
 		$items = ['as', 'bbb', 'ccc'];
 

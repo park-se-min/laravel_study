@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+	public function __construct()
+	{
+		$this->middleware('guest');
+	}
+
 	public function create()
 	{
 		return view('users.create');
@@ -28,15 +33,24 @@ class UsersController extends Controller
             'confirm_code' => $confirmCode,
 		]);
 
-		\Mail::send('emails.auth.confirm', compact('user'), function ($message) use ($user) {
-			$message->to($user->email);
-			$message->subject(
-				sprintf('[%s] 회원확인', config('app.name'))
-			);
-		});
+		event(new \App\Events\UserCreated($user));
+
+		// \Mail::send('emails.auth.confirm', compact('user'), function ($message) use ($user) {
+		// 	$message->to($user->email);
+		// 	$message->subject(
+		// 		sprintf('[%s] 회원확인', config('app.name'))
+		// 	);
+		// });
 
 		// auth()->login($user);
-		flash('메일확인!!');
+		// flash('메일확인!!');
+
+		return $this->respondCreated('메일확인!!');
+	}
+
+	protected function respondCreated($message)
+	{
+		flash($message);
 
 		return redirect('/');
 	}
