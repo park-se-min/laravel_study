@@ -52,6 +52,7 @@ class SessionsController extends Controller
 		return back()->withInput();
 	}
 
+
 	public function destroy()
 	{
 		auth()->logout();
