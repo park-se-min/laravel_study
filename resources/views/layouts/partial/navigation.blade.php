@@ -26,7 +26,7 @@
 			<li><a href="{{ url('/articles') }}">Articles</a></li>
 			<li><a href="{{ url('/docs') }}">Docs</a></li>
 			@if (Auth::guest())
-				<li><a href="{{ url('/login') }}">Login</a></li>
+				<li><a href="{{ url('/auth/login') }}">Login</a></li>
 				<li><a href="{{ url('/auth/register') }}">Register</a></li>
 			@else
 				<li class="dropdown">
@@ -36,13 +36,11 @@
 
 					<ul class="dropdown-menu" role="menu">
 						<li>
-							<a href="{{ url('/logout') }}"
-								onclick="event.preventDefault();
-										 document.getElementById('logout-form').submit();">
+							<a href="{{ url('/auth/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 								Logout
 							</a>
 
-							<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+							<form id="logout-form" action="{{ url('/auth/logout') }}" method="POST" style="display: none;">
 								{{ csrf_field() }}
 							</form>
 						</li>

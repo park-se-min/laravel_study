@@ -169,7 +169,7 @@ Route::post('auth/login', [
     'uses' => 'SessionsController@store',
 ]);
 
-Route::get('auth/logout', [
+Route::post('auth/logout', [
     'as' => 'sessions.destroy',
     'uses' => 'SessionsController@destroy',
 ]);
