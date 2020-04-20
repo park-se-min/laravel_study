@@ -189,9 +189,17 @@ Route::post('auth/remind', [
 Route::get('auth/reset/{token}', [
     'as' => 'reset.create',
     'uses' => 'PasswordsController@getReset',
-])->where('token', '[\pL-\pN]{64}');
+]);
+// ])->where('token', '[\pL-\pN]{64}');
 
 Route::post('auth/reset', [
     'as' => 'reset.store',
     'uses' => 'PasswordsController@postReset',
+]);
+
+
+
+Route::get('social/{provider}', [
+    'as' => 'social.login',
+    'uses' => 'SocialController@execute',
 ]);

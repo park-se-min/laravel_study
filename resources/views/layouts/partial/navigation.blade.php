@@ -26,6 +26,7 @@
 			<li><a href="{{ url('/articles') }}">Articles</a></li>
 			<li><a href="{{ url('/docs') }}">Docs</a></li>
 			@if (Auth::guest())
+				<li><a href="{{ url('/social/github') }}">github Login</a></li>
 				<li><a href="{{ url('/auth/login') }}">Login</a></li>
 				<li><a href="{{ url('/auth/register') }}">Register</a></li>
 			@else
