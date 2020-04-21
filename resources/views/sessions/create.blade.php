@@ -4,6 +4,19 @@
 <form action="{{ route('sessions.store') }}" method="POST" role="form" class="form__auth">
 	{!! csrf_field() !!}
 
+	<div class="page-header">
+		<h4>로그인</h4>
+		<p class="text-muted">
+			깃허브 로그인 {{ config('app.name') }} 로그인 가능
+		</p>
+	</div>
+
+	<div class="form-group">
+		<a class="btn btn-default btn-lg btn-block" href="{{ route('social.login', ['github']) }}">
+			github 로긴
+		</a>
+	</div>
+
 	<div class="form-group">
 		<div class="checkbox">
 			<label>

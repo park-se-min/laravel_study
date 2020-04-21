@@ -16,6 +16,8 @@
 //     // return view('errors/503');
 // });
 
+Route::get('/test', 'TestPHPCode@index');
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('/home', 'WelcomeController@index');
