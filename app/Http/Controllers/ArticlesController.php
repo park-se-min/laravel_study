@@ -86,7 +86,24 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function show(\App\Article $article)
+    {
+		// $article = \App\Article::findOrFail($id);
+
+		debug($article->toArray());
+
+		// dd($article);
+
+		// return $article->toArray();
+
+		return view('articles.show', compact('article'));
+
+		// return __METHOD__ .' 기본키를 가진 Article whghl :'. $id;
+	}
+
+/*
+	 public function show($id)
     {
 		$article = \App\Article::findOrFail($id);
 
@@ -100,7 +117,7 @@ class ArticlesController extends Controller
 
 		// return __METHOD__ .' 기본키를 가진 Article whghl :'. $id;
     }
-
+ */
     /**
      * Show the form for editing the specified resource.
      *

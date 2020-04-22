@@ -30,7 +30,8 @@ Route::get('/home', 'WelcomeController@index');
 // 	return 'home2';
 // });
 
-// Route::get('/articles', 'ArticlesController@index');
+Route::get('/articles', 'ArticlesController@index');
+// Route::get('/articles/{id}', 'ArticlesController@show');
 
 // Route::get('/', function () {
 // 	$items = ['as', 'bbb', 'ccc'];
@@ -175,7 +176,6 @@ Route::post('auth/logout', [
     'as' => 'sessions.destroy',
     'uses' => 'SessionsController@destroy',
 ]);
-
 
 /* 비밀번호 초기화 */
 Route::get('auth/remind', [
