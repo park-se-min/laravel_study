@@ -30,4 +30,9 @@ class TestPHPCode extends Controller
 		echo '</pre>';
 		exit;
 	}
+
+	public function create()
+	{
+		echo 111;
+	}
 }

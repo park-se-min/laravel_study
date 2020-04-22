@@ -61,7 +61,6 @@ class ArticlesController extends Controller
 		//   if ($validator->fails()) {
 		// 	  return back()->withErrors($validator)->withInput();
 		//   }
-
 		$article = \App\User::find(1)->articles()->create($request->all());
 
 		if (!$article) {
