@@ -20,6 +20,18 @@ Route::get('articles/create', [
 	'uses' => 'ArticlesController@create',
 ]);
 
+
+Route::get('articles/show/{article}', [
+    'as' => 'articles.show',
+	'uses' => 'ArticlesController@show',
+]);
+
+Route::get('articles/edit/{article}', [
+    'as' => 'articles.edit',
+	'uses' => 'ArticlesController@edit',
+]);
+
+
 Route::post('articles/store', [
     'as' => 'articles.store',
 	'uses' => 'ArticlesController@store',

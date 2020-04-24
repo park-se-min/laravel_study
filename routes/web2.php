@@ -86,25 +86,6 @@ Route::get('/home', 'WelcomeController@index');
 // });
 
 
-// Route::get('markdown', function () {
-// $text = <<<EOT
-// # 마크다운 예제 1
-
-// 이문서는 [마크다운][1] 으로 썼습니다. 화면 어저구 출력됩니다
-
-// ## 순서없는 목록
-
-// - 첫번째 항목
-// - 두번째 항목[^2]
-
-// [1]: http://naver.com
-
-// [^2]: 두번째 항목_ http://daum.net
-
-// EOT;
-
-// 	return app(ParsedownExtra::class)->text($text);
-// });
 
 // // Route::get('docs/{file?}', function ($file = null) {
 // // 	$text = (new App\Documentation)->get($file);

@@ -86,11 +86,17 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // public function show(\App\Article $article)
     public function show(\App\Article $article)
     {
+		// $article = \App\Article::get()->where;
+		// dd($article->title);
+
 		// $article = \App\Article::findOrFail($id);
 
-		debug($article->toArray());
+		// debug($article->toArray());
+
+		// echo($article);
 
 		// dd($article);
 
@@ -123,9 +129,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Article $article)
     {
-        //
+        return view('articles.edit', compact('article'));
     }
 
     /**

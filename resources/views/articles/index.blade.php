@@ -9,26 +9,17 @@
 			<i class="fa fa-plus-circle"></i>새글 쓰기
 		</a>
 	</div>
-
-	<div class="container">
-		<hr/>
-		<ul>
-			@forelse ($articles as $article)
-				<li style="margin:15px 0;">
-					1{{ $article->title }}
-					<span style="border: solid 1px #ffcc00; padding: 5px;">
-						br {{ $article->user->name }}
-					</span>
-				</li>
-			@empty
-				글없음
-			@endforelse
-		</ul>
-	</div>
+	<article>
+		@forelse ($articles as $article)
+			@include('articles.partial.article', compact('article'))
+		@empty
+			글없음
+		@endforelse
+	</article>
 
 	@if ($articles->count())
 		<div class="text-center">
-			{!! $articles->render() !!}
+			{!! $articles->appends(Request::except('page'))->render() !!}
 		</div>
 	@endif
 
