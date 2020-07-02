@@ -38,6 +38,11 @@ Route::post('articles/store', [
 ]);
 
 
+Route::put('articles/update/{article}', [
+    'as' => 'articles.update',
+	'uses' => 'ArticlesController@update',
+]);
+
 /* 사용자 등록 */
 Route::get('auth/register', [
     'as' => 'users.create',

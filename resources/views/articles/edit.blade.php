@@ -7,17 +7,13 @@
 
 	<hr>
 
-	<form action="{{ route('articles.store') }}" method="POST">
+	<form action="{{ route('articles.update', $article->id) }}" method="POST">
 		{!! csrf_field() !!}
+		{!! method_field('PUT') !!}
 
-		<div class="form-group {{ $errors->has('title') ?'asdf' : '' }}">
-			<input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control">
-			{!! $errors->first('content', '<span class="form-error">:message</span>') !!}
-		</div>
+		@include('articles.partial.form')
 
-		<textarea name="content" id="content" rows=10 class="form-control">{{ old('content') }}</textarea>
-
-		<button type="submit" class="btn btn-primary">저장하기</button>
+		<button type="submit" class="btn btn-primary">수정하기</button>
 
 	</form>
 

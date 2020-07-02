@@ -141,9 +141,14 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(\App\Http\Requests\ArticlesRequest $request, \App\Article $article)
     {
-        //
+		//
+
+		$article->update($request->all());
+		flash()->success('수정');
+
+		return redirect(route('articles.show', $article->id));
     }
 
     /**
