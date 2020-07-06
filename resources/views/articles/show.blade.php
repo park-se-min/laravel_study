@@ -9,13 +9,17 @@
 
 	<hr>
 
-	<article>
+	<article data-id="{{ $article->id }}" id="item__article">
 		@include('articles.partial.article', compact('article'))
 	</article>
 
 	<div class="text-center action__article">
 		<a href="{{ route('articles.edit', $article->id) }}" class="btn btn-info">
 			<i class="fa fa-pencil"></i>글 수정
+		</a>
+
+		<a href="{{ route('articles.delete2', $article->id) }}" class="btn btn-info">
+			<i class="fa fa-pencil"></i>글 삭제
 		</a>
 
 		<button class="btn btn-danger button__delete">
@@ -29,4 +33,27 @@
 
 </div>
 
+@stop
+
+@section('script')
+	<script>
+		$.ajaxSetup({
+			headers:{
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+
+		$('.button__delete').on('click', function (e) {
+			var articleId = $('article').data('id');
+
+			if (confirm('글을 삭제')) {
+				$.ajax({
+					type: 'DELETE',
+					url: '/articles/' + articleId
+				}).then(function () {
+					window.location.href = '/articles';
+				});
+			}
+		});
+		</script>
 @stop

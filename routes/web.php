@@ -43,6 +43,17 @@ Route::put('articles/update/{article}', [
 	'uses' => 'ArticlesController@update',
 ]);
 
+
+Route::get('articles/delete2/{article}', [
+    'as' => 'articles.delete2',
+	'uses' => 'ArticlesController@destroy2',
+]);
+
+Route::delete('articles/{article}', [
+    'as' => 'articles.delete',
+	'uses' => 'ArticlesController@destroy',
+]);
+
 /* 사용자 등록 */
 Route::get('auth/register', [
     'as' => 'users.create',

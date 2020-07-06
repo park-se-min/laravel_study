@@ -157,8 +157,17 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Article $article)
     {
-        //
+		$article->delete();
+
+		return response()->json([], 204);
+	}
+
+    public function destroy2(\App\Article $article)
+    {
+		$article->delete();
+
+		return redirect(route('articles.index'));
     }
 }
