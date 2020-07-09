@@ -53,4 +53,9 @@ class User extends Authenticatable
 			return redirect('protected');
 		}
 	}
+
+	public function isAdmin()
+	{
+		return ($this->id === 1) ? true : false;
+	}
 }

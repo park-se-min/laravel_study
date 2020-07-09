@@ -14,17 +14,21 @@
 	</article>
 
 	<div class="text-center action__article">
-		<a href="{{ route('articles.edit', $article->id) }}" class="btn btn-info">
-			<i class="fa fa-pencil"></i>글 수정
-		</a>
+		@can('update', $article)
+			<a href="{{ route('articles.edit', $article->id) }}" class="btn btn-info">
+				<i class="fa fa-pencil"></i>글 수정
+			</a>
+		@endcan
 
-		<a href="{{ route('articles.delete2', $article->id) }}" class="btn btn-info">
-			<i class="fa fa-pencil"></i>글 삭제
-		</a>
+		@can('delete', $article)
+			<a href="{{ route('articles.delete2', $article->id) }}" class="btn btn-info">
+				<i class="fa fa-pencil"></i>글 삭제
+			</a>
 
-		<button class="btn btn-danger button__delete">
-			<i class="fa fa-trash-o"></i>글 삭제
-		</button>
+			<button class="btn btn-danger button__delete">
+				<i class="fa fa-trash-o"></i>글 삭제
+			</button>
+		@endcan
 
 		<a href="{{ route('articles.index') }}" class="btn btn-default">
 			<i class="fa fa-list"></i>글 목록

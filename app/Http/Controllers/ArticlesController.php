@@ -12,6 +12,11 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+	public function __construct()
+	{
+		$this->middleware('auth', ['except'=>['index', 'show']]);
+	}
+
     public function index()
     {
 		//// 1
@@ -42,6 +47,8 @@ class ArticlesController extends Controller
     public function create()
     {
 		//
+		$article = new \App\Article;
+
 		return view('articles.create');
     }
 
@@ -61,7 +68,12 @@ class ArticlesController extends Controller
 		//   if ($validator->fails()) {
 		// 	  return back()->withErrors($validator)->withInput();
 		//   }
-		$article = \App\User::find(1)->articles()->create($request->all());
+
+		// $user = $request->user();
+
+		$article = $request->user()->articles()->create($request->all());
+
+		// $article = \App\User::find(1)->articles()->create($request->all());
 
 		if (!$article) {
 			return back()->with('flash_message', '글저장ㄴㄴ')->withInput();
@@ -131,6 +143,8 @@ class ArticlesController extends Controller
      */
     public function edit(\App\Article $article)
     {
+		$this->authorize('update', $article);
+
         return view('articles.edit', compact('article'));
     }
 
@@ -159,6 +173,8 @@ class ArticlesController extends Controller
      */
     public function destroy(\App\Article $article)
     {
+		$this->authorize('delete', $article);
+
 		$article->delete();
 
 		return response()->json([], 204);
@@ -166,6 +182,8 @@ class ArticlesController extends Controller
 
     public function destroy2(\App\Article $article)
     {
+		$this->authorize('delete', $article);
+
 		$article->delete();
 
 		return redirect(route('articles.index'));

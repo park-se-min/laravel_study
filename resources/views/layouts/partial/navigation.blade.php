@@ -22,8 +22,8 @@
 		<ul class="nav navbar-nav navbar-right">
 			<!-- Authentication Links -->
 			<li><a href="{{ url('/') }}">HOME</a></li>
-			<li><a href="{{ url('/articles/create') }}">Articles/create</a></li>
-			<li><a href="{{ url('/articles') }}">Articles</a></li>
+			<li><a href="{{ route('articles.create') }}">Articles/create</a></li>
+			<li><a href="{{ route('articles.index') }}">Articles</a></li>
 			<li><a href="{{ url('/docs') }}">Docs</a></li>
 			@if (Auth::guest())
 				<li><a href="{{ url('/social/github') }}">github Login</a></li>
