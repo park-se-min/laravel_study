@@ -8,8 +8,6 @@ Route::get('test/register', [
 Route::get('/', 'WelcomeController@index');
 Route::get('/home', 'WelcomeController@index');
 
-
-
 Route::get('articles', [
     'as' => 'articles.index',
 	'uses' => 'ArticlesController@index',
@@ -72,11 +70,6 @@ Route::get('auth/confirm/{code}', [
 	'uses' => 'UsersController@confirm',
 ]);
 
-// // ])->where('code', '[\pL-\pN]{60}'); < 이부분에서 에러나서 패스!
-// Route::get('auth/confirm/{code}', [
-//     'as' => 'users.confirm',
-//     'uses' => 'UsersController@confirm',
-// ])->where('code', '[\pL-\pN]{60}');
 
 
 /* 사용자 인증 */
