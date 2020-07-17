@@ -15,6 +15,7 @@ class UsersController extends Controller
 	{
 		return view('users.create');
 	}
+
 	public function stroe(Request $request)
 	{
 		$socialUser = \App\User::whereEmail($request->input('email'))->whereNull('password')->first();
@@ -75,7 +76,7 @@ class UsersController extends Controller
     }
 
 
-/*
+
 	public function store(Request $request)
 	{
         $this->validate($request, [
@@ -107,7 +108,7 @@ class UsersController extends Controller
 
 		return $this->respondCreated('메일확인!!');
 	}
- */
+
 	protected function respondCreated($message)
 	{
 		flash($message);
