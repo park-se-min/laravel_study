@@ -70,6 +70,16 @@ class ArticlesController extends Controller
 		//   }
 
 		// $user = $request->user();
+		if($request->hasFile('files'))
+		{
+			$files = $request->file('files');
+
+			foreach ($files as $file)
+			{
+				$filename = str_random(). filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
+				$file->move(attachments_path(), $filename);
+			}
+		}
 
 		$article = $request->user()->articles()->create($request->all());
 
