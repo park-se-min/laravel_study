@@ -20,4 +20,9 @@ class Article extends Model
 	{
 		return $this->belongsToMany(tag::class);
 	}
+
+	public function attachments()
+	{
+		return $this->hasMany(Attachment::Class);
+	}
 }

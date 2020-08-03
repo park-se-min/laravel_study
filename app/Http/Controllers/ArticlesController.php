@@ -70,6 +70,23 @@ class ArticlesController extends Controller
 		//   }
 
 		// $user = $request->user();
+
+		// $article = $request->user()->articles()->create($request->all());
+
+		// var_dump('이벤트 시작');
+		// echo '<br>';
+
+		// event(new \App\Events\ArticleCreatedTest($article));
+
+		// echo '<br>';
+		// var_dump('이벤트 끝');
+		// echo '<br>';
+
+
+
+		$article = $request->user()->articles()->create($request->all());
+
+
 		if($request->hasFile('files'))
 		{
 			$files = $request->file('files');
@@ -78,10 +95,14 @@ class ArticlesController extends Controller
 			{
 				$filename = str_random(). filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
 				$file->move(attachments_path(), $filename);
+
+				$article->attachments()->create([
+					'filename' => $filename,
+					'bytes' => $file->getClientSize(),
+					'mime' => $file->getClientSize()
+				]);
 			}
 		}
-
-		$article = $request->user()->articles()->create($request->all());
 
 		// $article = \App\User::find(1)->articles()->create($request->all());
 
@@ -89,14 +110,14 @@ class ArticlesController extends Controller
 			return back()->with('flash_message', '글저장ㄴㄴ')->withInput();
 		}
 
-		var_dump('이벤트 시작');
-		echo '<br>';
-		// event('article.created', [$article]);
-		// event(new \App\Events\ArticleCreated($article));
-		event(new \App\Events\ArticlesEvent($article));
-		echo '<br>';
-		var_dump('이벤트 끝');
-		echo '<br>';
+		// var_dump('이벤트 시작');
+		// echo '<br>';
+		// // event('article.created', [$article]);
+		// // event(new \App\Events\ArticleCreated($article));
+		// event(new \App\Events\ArticlesEvent($article));
+		// echo '<br>';
+		// var_dump('이벤트 끝');
+		// echo '<br>';
 
 		return redirect(route('articles.index'))->with('flash_message', '글저장 ㅇㅇㅇㅇㅇ');
    }

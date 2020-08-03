@@ -38,12 +38,18 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-			parent::boot();
+		parent::boot();
 
-			\Event::listen(
-				\App\Events\ArticleCreated::class,
-				\App\Listeners\ArticlesEventListener::class
-			);
+
+		\Event::listen(
+			\App\Events\ArticleCreatedTest::class,
+			\App\Listeners\ArticlesEventListenerTest::class
+		);
+
+		\Event::listen(
+			\App\Events\ArticleCreated::class,
+			\App\Listeners\ArticlesEventListener::class
+		);
 
 /*
       	\Event::listen('article.created', function($article) {

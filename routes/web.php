@@ -1,5 +1,16 @@
 <?php
 
+Route::get('notice', [
+    'as' => 'test.notice',
+	'uses' => 'NoticesController@index',
+]);
+
+Route::get('notice/create', [
+    'as' => 'notices.create',
+	'uses' => 'NoticesController@create',
+]);
+
+
 Route::get('test/register', [
     'as' => 'test.create',
 	'uses' => 'TestPHPCode@create',

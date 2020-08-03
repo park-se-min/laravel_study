@@ -29,7 +29,7 @@ class ArticlesRequest extends FormRequest
             'title' => ['required'],
 			'content' => ['required', 'min:1'],
 			'files' => ['array'],
-			// 'files.*' => ['mimes:jpg,png,zip,tar', 'max:30000'],
+			'files.*' => ['mimes:jpg,png,zip,tar', 'max:30000'],
         ];
 	 }
 
