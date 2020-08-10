@@ -7,7 +7,7 @@
 	echo '<pre>';
 	print_r(count($coworkers));
 	echo '</pre>';
-	echo 1;
+	echo 2;
 
 	echo array_push($coworkers,'graphittie');  //끝에 추가
 
