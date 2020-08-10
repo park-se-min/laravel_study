@@ -17,12 +17,14 @@
 
 		<textarea name="content" id="content" rows=10 class="form-control">{{ old('content') }}</textarea>
 
+		@include('articles.partial.form')
+{{--
 		<div class="form-group {{ $errors->has('file') ?'has-error' : '' }}">
 			<label for="files">파일</label>
 			<input type="file" name="files[]" id="files" class="form-control" multiple="multiple">
 			{!! $errors->first('files.0', '<span class="form-error">:message</span>') !!}
 		</div>
-
+ --}}
 		<button type="submit" class="btn btn-primary">저장하기</button>
 
 	</form>

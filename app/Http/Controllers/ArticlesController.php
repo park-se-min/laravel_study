@@ -49,7 +49,7 @@ class ArticlesController extends Controller
 		//
 		$article = new \App\Article;
 
-		return view('articles.create');
+		return view('articles.create', compact('article'));
     }
 
     /**

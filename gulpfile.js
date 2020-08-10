@@ -20,6 +20,7 @@ elixir(mix => {
 
 	mix.scripts([
 	  '../../../node_modules/highlightjs/highlight.pack.js',
+	  '../../../node_modules/dropzone/dist/dropzone.js',
 	  '../../../public/js/app.js'
 	], 'public/js/app.js');
 

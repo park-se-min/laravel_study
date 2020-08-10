@@ -1,5 +1,15 @@
 <?php
 
+Route::resource(
+	'attachments',
+	'Attachment',
+	['onlay'=>[
+		'store',
+		'destroy'
+	]]
+);
+
+
 Route::get('notice', [
     'as' => 'test.notice',
 	'uses' => 'NoticesController@index',
